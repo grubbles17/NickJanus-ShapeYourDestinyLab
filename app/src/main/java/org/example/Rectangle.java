@@ -1,24 +1,31 @@
 package org.example;
 
 public class Rectangle extends Shape {
-    private final double width;
-    private double height;
+    protected final double width;
+    protected double height;
 
-    public Rectangle() {
+    //Begin the constructor
+    public Rectangle(double width, double height) {
+        if ( width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("Enter a positive integer.");
+        }
         this.width = height;
         this.height = width;
     }
 
     @Override
     public double getArea() {
-        System.out.println("Rectangle Area");
         return width * height;
     }
 
     @Override
     public double getPerimeter() {
-        System.out.println("Rectangle Perimeter");
         return 2 * (width + height);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Rectangle [width=%.2f, height=%.2f]", width, height);
     }
 
 }
