@@ -1,6 +1,7 @@
 package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 class AppTest {
@@ -12,23 +13,44 @@ class AppTest {
 
   @Test
     public void testCircle() {
-        Circle c = new Circle();
-        assertEquals(Math.PI * 25, c.getArea(), 0.0001);
-        assertEquals(2 * Math.PI * 5, c.getPerimeter(), 0.0001);
+        Circle c = new Circle(3);
+        assertEquals(Math.PI * 25, c.getArea());
+        assertEquals(2 * Math.PI * 5, c.getPerimeter());
     }
 
     @Test
-    public void testRectangle() {
-        Rectangle r = new Rectangle();
-        assertEquals(24, r.getArea(), 0.0001);
-        assertEquals(20, r.getPerimeter(), 0.0001);
+        public void testRectangle() {
+        Rectangle r = new Rectangle(4, 6);
+        assertEquals(24, r.getArea());
+        assertEquals(20, r.getPerimeter());
     }
 
     @Test
     public void testRightTriangle() {
-        RightTriangle t = new RightTriangle();
-        assertEquals(6, t.getArea(), 0.0001);
-        assertEquals(12, t.getPerimeter(), 0.0001); // 3 + 4 + (12 - 7)
+        RightTriangle t = new RightTriangle(3, 4, 5);
+        assertEquals(6, t.getArea());
+        assertEquals(12, t.getPerimeter()); // 3 + 4 + (12 - 7)
+    }
+
+    @Test
+    void testRectangleAreaAndPerimeter() {
+        Rectangle rect = new Rectangle(4, 6);
+        assertEquals(24.0, rect.getArea(), 0.0001, "Area should be width * height");
+        assertEquals(20.0, rect.getPerimeter(), 0.0001, "Perimeter should be 2*(width+height)");
+    }
+
+    @Test
+    void testSquareAreaAndPerimeter() {
+        Square square = new Square(5);
+        assertEquals(25.0, square.getArea(), 0.0001, "Area should be side^2");
+        assertEquals(20.0, square.getPerimeter(), 0.0001, "Perimeter should be 4*side");
+    }
+
+    @Test
+    void testInheritance() {
+        Square square = new Square(5);
+        assertTrue(square instanceof Rectangle, "Square should be a Rectangle");
+        assertTrue(square instanceof Shape, "Square should be a Shape");
     }
 
 }
