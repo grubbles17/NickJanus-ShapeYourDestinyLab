@@ -32,7 +32,7 @@ try {
 
   System.out.println(" ");
 //For RightTriangle and IsocelesRightTriangle
-  RightTriangle myRightTriangle = new RightTriangle(3, 4, 5);
+  RightTriangle myRightTriangle = new RightTriangle(3, 4);
   IsocelesRightTriangle myIsocelesRightTriangle = new IsocelesRightTriangle(4);
 
   System.out.println(" ");
@@ -51,4 +51,5 @@ try {
 }
   }
 }
+
 
