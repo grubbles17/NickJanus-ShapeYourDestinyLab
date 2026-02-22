@@ -27,7 +27,7 @@ class AppTest {
 
     @Test
     public void testRightTriangle() {
-        RightTriangle t = new RightTriangle(3, 4, 5);
+        RightTriangle t = new RightTriangle(3, 4);
         assertEquals(6, t.getArea());
         assertEquals(12, t.getPerimeter()); // 3 + 4 + (12 - 7)
     }
@@ -51,6 +51,41 @@ class AppTest {
         Square square = new Square(5);
         assertTrue(square instanceof Rectangle, "Square should be a Rectangle");
         assertTrue(square instanceof Shape, "Square should be a Shape");
+    }
+
+     @Test
+    public void testRectangleSides() {
+        Polygon rect = new Rectangle(5, 10);
+        assertEquals(4, rect.numberOfSides(), "Rectangle should have 4 sides");
+    }
+
+    @Test
+    public void testSquareSides() {
+        Polygon square = new Square(6);
+        assertEquals(4, square.numberOfSides(), "Square should have 4 sides");
+    }
+
+    @Test
+    public void testRightTriangleSides() {
+        Polygon triangle = new RightTriangle(3, 4);
+        assertEquals(3, triangle.numberOfSides(), "Right triangle should have 3 sides");
+    }
+
+    @Test
+    public void testIsoscelesRightTriangleSides() {
+        Polygon isoTriangle = new IsoscelesRightTriangle(5);
+        assertEquals(3, isoTriangle.numberOfSides(), "Isosceles right triangle should have 3 sides");
+    }
+
+    private static class IsoscelesRightTriangle implements Polygon {
+
+        public IsoscelesRightTriangle(int i) {
+        }
+
+        @Override
+        public int numberOfSides() {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
     }
 
 }
