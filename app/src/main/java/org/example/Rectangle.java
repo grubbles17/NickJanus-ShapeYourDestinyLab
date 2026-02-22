@@ -1,6 +1,7 @@
 package org.example;
 
-public class Rectangle extends Shape {
+//Also implements newly made Polygon with the function to combine classes to the interface
+public class Rectangle extends Shape implements Polygon {
     protected final double width;
     protected double height;
 
@@ -11,6 +12,10 @@ public class Rectangle extends Shape {
         }
         this.width = height;
         this.height = width;
+    }
+
+    public Rectangle(double width) {
+        this.width = width;
     }
 
     @Override
@@ -28,4 +33,10 @@ public class Rectangle extends Shape {
         return String.format("Rectangle [width=%.2f, height=%.2f]", width, height);
     }
 
+    @Override
+    public int numberOfSides() {
+        return 4;
+    }
+
 }
+
